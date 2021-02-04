@@ -22,6 +22,7 @@ import Header from "@/components/Header.vue";
 import PostList from "@/components/PostList.vue";
 import PostRow from "@/components/PostRow.vue";
 import { Options, Vue } from "vue-class-component";
+import axios from "axios";
 
 @Options({
   components: { Header, PostList, PostRow },
@@ -31,17 +32,20 @@ import { Options, Vue } from "vue-class-component";
     };
   },
 })
-export default class Home extends Vue implements IApi {
+export default class Home extends Vue {
   posts: Post[] = [];
 
   async mounted() {
     this.posts = await this.fetch();
+    console.log(this.posts);
   }
 
   async fetch(): Promise<Post[]> {
-    const api = new Api();
-    console.log("----1");
-    return await api.fetch("posts");
+    // const api = new Api()
+    const { data } = await axios.get(
+      `https://jsonplaceholder.typicode.com/posts`
+    );
+    return await data;
   }
 
   catchCustomEvent(event: CustomEvent) {
