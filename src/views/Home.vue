@@ -35,12 +35,13 @@ export default class Home extends Vue implements IApi {
   posts: Post[] = [];
 
   async mounted() {
-    this.posts = await this.fetch("posts");
+    this.posts = await this.fetch();
   }
 
-  async fetch(url: string): Promise<any> {
+  async fetch(): Promise<Post[]> {
     const api = new Api();
-    return await api.fetch(url);
+    console.log("----1");
+    return await api.fetch("posts");
   }
 
   catchCustomEvent(event: CustomEvent) {

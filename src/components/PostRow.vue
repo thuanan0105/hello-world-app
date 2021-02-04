@@ -1,7 +1,7 @@
 
 <template>
   <div class="post-list__row">
-    <span>{{ title }} </span>
+    <span>{{ title }}</span>
     <!-- <span :class="{ 'post-list__row--completed': body }">{{ title }}</span> -->
     <div class="post-list__row--desc">
       <i>[{{ body }}]</i>
