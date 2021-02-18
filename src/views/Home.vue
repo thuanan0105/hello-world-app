@@ -9,6 +9,7 @@
           :key="id"
           :title="title"
           :body="body"
+          :id="id"
         />
       </PostList>
     </main>

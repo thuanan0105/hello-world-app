@@ -1,8 +1,8 @@
 
 <template>
   <div class="post-list__row">
-    <span>{{ title }}</span>
-    <!-- <span :class="{ 'post-list__row--completed': body }">{{ title }}</span> -->
+    <router-link to="post">{{ id }}</router-link>
+    <div>{{ title }}</div>
     <div class="post-list__row--desc">
       <i>[{{ body }}]</i>
     </div>

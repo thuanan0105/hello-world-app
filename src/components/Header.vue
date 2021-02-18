@@ -22,14 +22,6 @@ import { CustomEvent } from "@/models/custom-event";
 export default class Header extends Vue {
   public title!: String;
 
-  beforeCreate() {
-    console.log("---beforeCreate");
-  }
-
-  created() {
-    console.log("---created");
-  }
-
   beforeMount() {
     console.log("---beforeMount");
   }
