@@ -16,13 +16,12 @@
 </template>
 
 <script lang="ts">
-import { Post, IApi } from "@/models";
-import { Api } from "@/apis";
+import { Post } from "@/models";
 import Header from "@/components/Header.vue";
 import PostList from "@/components/PostList.vue";
 import PostRow from "@/components/PostRow.vue";
 import { Options, Vue } from "vue-class-component";
-import axios from "axios";
+import { Api } from "../apis/api";
 
 @Options({
   components: { Header, PostList, PostRow },
@@ -37,15 +36,11 @@ export default class Home extends Vue {
 
   async mounted() {
     this.posts = await this.fetch();
-    console.log(this.posts);
   }
 
   async fetch(): Promise<Post[]> {
-    // const api = new Api()
-    const { data } = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts`
-    );
-    return await data;
+    const api = new Api();
+    return await api.fetch("posts");
   }
 
   catchCustomEvent(event: CustomEvent) {

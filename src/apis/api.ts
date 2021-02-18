@@ -1,5 +1,6 @@
-import { AxiosApi, BaseApi } from '@/apis';
 import { IApi } from '@/models';
+import { AxiosApi } from './axiosApi';
+import { BaseApi } from './baseApi';
 
 export class Api extends BaseApi implements IApi {
   private provider: any = new AxiosApi()
