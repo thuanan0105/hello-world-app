@@ -1,3 +1,3 @@
 export interface IApi {
-  fetch(url: string): Promise<any>;
+  get(url: string): Promise<any>;
 }

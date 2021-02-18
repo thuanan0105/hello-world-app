@@ -40,7 +40,7 @@ export default class Home extends Vue {
 
   async fetch(): Promise<Post[]> {
     const api = new Api();
-    return await api.fetch("posts");
+    return await api.get("posts");
   }
 
   catchCustomEvent(event: CustomEvent) {
