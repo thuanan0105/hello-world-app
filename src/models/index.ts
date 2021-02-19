@@ -1,11 +1,9 @@
-import { IApi } from "./api";
-import { CustomEvent } from "./custom-event";
+import { CustomEvent } from '././custom-event';
+import { IApi } from './api';
 import { Post } from './post';
-
 
 export {
   IApi,
   CustomEvent,
   Post
 };
-

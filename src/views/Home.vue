@@ -17,12 +17,12 @@
 </template>
 
 <script lang="ts">
-import { Post } from "@/models";
 import Header from "@/components/Header.vue";
 import PostList from "@/components/PostList.vue";
 import PostRow from "@/components/PostRow.vue";
 import { Options, Vue } from "vue-class-component";
-import { Api } from "../apis/api";
+import { Post } from "@/models";
+import { Api } from "../apis";
 
 @Options({
   components: { Header, PostList, PostRow },

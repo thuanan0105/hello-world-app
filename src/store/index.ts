@@ -3,8 +3,8 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     user: {
-      loggedIn: true,
-      subscribed: true
+      loggedIn: false,
+      subscribed: false
     }
   },
   getters: {
