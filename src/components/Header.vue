@@ -22,14 +22,6 @@ import { CustomEvent } from "@/models/custom-event";
 export default class Header extends Vue {
   public title!: String;
 
-  beforeMount() {
-    console.log("---beforeMount");
-  }
-
-  mounted() {
-    console.log("---mounted");
-  }
-
   fireCustomEvent() {
     const data: CustomEvent = {
       name: "Custom event",
