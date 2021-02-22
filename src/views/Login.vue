@@ -1,15 +1,90 @@
+
+
 <template>
   <div class="log-form">
     <h2>Login to your account</h2>
-    <form>
-      <input type="text" title="username" placeholder="username" />
-      <input type="password" title="username" placeholder="password" />
+    <form @submit="submitForm" autocomplete="off">
+      <input
+        id="username"
+        v-model="username"
+        type="text"
+        title="username"
+        placeholder="username"
+        autocomplete="off"
+      />
+      <p v-bind:class="{ hide: !error.hasOwnProperty('username') }">
+        {{ error.username }}
+      </p>
+      <input
+        id="password"
+        v-model="password"
+        type="password"
+        title="username"
+        placeholder="password"
+        autocomplete="off"
+      />
+      <p v-bind:class="{ hide: !error.hasOwnProperty('password') }">
+        {{ error.password }}
+      </p>
       <button type="submit" class="btn">Login</button>
     </form>
   </div>
 </template>
 
+<script lang="ts">
+import { Vue, Options } from "vue-class-component";
+import store from "../store";
+
+@Options({
+  data() {
+    return {};
+  },
+})
+export default class Login extends Vue {
+  username: string = "";
+  password: string = "";
+  error: any = {};
+  user: any = {};
+
+  computed() {
+    console.log(this);
+  }
+
+  validateForm() {
+    if (this.username && this.password) {
+      store.state.user.loggedIn = true;
+      store.state.user.subscribed = true;
+      console.log(store);
+      return true;
+    }
+
+    if (!this.username) {
+      this.error.username = "Username must not be empty.";
+    }
+
+    if (!this.password) {
+      this.error.password = "Password must not be empty.";
+    }
+
+    event?.preventDefault();
+
+    return false;
+  }
+
+  submitForm() {
+    if (!this.validateForm()) {
+      return;
+    }
+  }
+}
+</script>
+
 <style lang="scss" scoped>
+@import "@/assets/scss/font";
+
+.hide {
+  display: none;
+}
 
 .log-form {
   width: 40%;
@@ -41,7 +116,7 @@
 }
 .log-form form {
   display: block;
-  width: 100%;
+  // width: 100%;
   padding: 2em;
 }
 .log-form h2 {
@@ -50,7 +125,7 @@
   font-size: 1.35em;
   display: block;
   background: #2a2a2a;
-  width: 100%;
+  // width: 100%;
   text-transform: uppercase;
   padding: 0.75em 1em 0.75em 1.5em;
   box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.05);
@@ -63,9 +138,9 @@
   margin: auto auto;
   width: 100%;
   margin-bottom: 2em;
-  padding: 1em;
-  border-radius: 5px;
-  border: 1px solid rgb(216 216 216);
+  padding: 1em 0;
+  border: none;
+  border-bottom: 1px solid rgb(216 216 216);
   color: #757575;
 }
 .log-form input:focus {
