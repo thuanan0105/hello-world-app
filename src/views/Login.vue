@@ -52,9 +52,6 @@ export default class Login extends Vue {
 
   validateForm() {
     if (this.username && this.password) {
-      store.state.user.loggedIn = true;
-      store.state.user.subscribed = true;
-      console.log(store);
       return true;
     }
 
